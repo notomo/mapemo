@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "module": "es2015",
+        "target": "es5",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "removeComments": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "strict": true,
+        "declaration": false,
+        "skipLibCheck": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "baseUrl": "src",
+        "types": [
+            "googlemaps"
+        ]
+    }
+}
