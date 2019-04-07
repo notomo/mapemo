@@ -1,6 +1,6 @@
 <template>
   <div>
-    <map-area></map-area>
+    <finder></finder>
   </div>
 </template>
 

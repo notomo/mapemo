@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div id="map"></div>
+    <div id="map" v-on:click="echoCenter()"></div>
     <template v-if="!!this.map">
-      <map-marker :position='{ lat: 35.6975644, lng: 139.7633811 }' :map="this.map"></map-marker>
+      <map-marker
+        v-for="place in this.places"
+        :key="place.name"
+        :map="map"
+        :position="place.position"
+      ></map-marker>
     </template>
   </div>
 </template>
