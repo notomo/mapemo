@@ -3,6 +3,10 @@ import MapMarker from "../map-marker/template.vue";
 import { Place } from "../../models/place";
 import { Component, Prop } from "vue-property-decorator";
 
+const defaultLat = 35.6975644;
+const defaultLng = 139.7633811;
+const defaultZoom = 17;
+
 @Component({
   components: { MapMarker },
 })
@@ -21,9 +25,12 @@ export default class MapArea extends Vue {
 
   mounted() {
     this.map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 35.6975644, lng: 139.7633811 },
+      center: {
+        lat: Number(this.$route.query.lat) || defaultLat,
+        lng: Number(this.$route.query.lng) || defaultLng,
+      },
       mapTypeControl: false,
-      zoom: 17,
+      zoom: Number(this.$route.query.zoom) || defaultZoom,
     });
   }
 }
