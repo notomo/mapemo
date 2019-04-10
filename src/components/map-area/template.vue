@@ -7,6 +7,7 @@
         :key="place.name"
         :map="map"
         :position="place.position"
+        :visible="place.visible"
       ></map-marker>
     </template>
   </div>

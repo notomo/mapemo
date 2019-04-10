@@ -5,7 +5,7 @@ import { Component, Prop } from "vue-property-decorator";
 
 const defaultLat = 35.6975644;
 const defaultLng = 139.7633811;
-const defaultZoom = 17;
+const defaultZoom = 16;
 
 @Component({
   components: { MapMarker },

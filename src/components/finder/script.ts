@@ -1,19 +1,42 @@
 import Vue from "vue";
 import MapArea from "../map-area/template.vue";
+import ListArea from "../list-area/template.vue";
 import { Place } from "../../models/place";
 import { Component } from "vue-property-decorator";
 
+const places = [
+  {
+    name: "hoge",
+    position: { lat: 35.6946888, lng: 139.7616235 },
+    visible: true,
+  },
+  {
+    name: "foo",
+    position: { lat: 35.6960163, lng: 139.7640851 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+];
+
 @Component({
-  components: { MapArea },
+  components: { MapArea, ListArea },
 })
 export default class Finder extends Vue {
-  protected places: Place[] = [];
+  protected query = "";
+  protected places: Place[] = places;
 
-  mounted() {
-    this.places = [
-      { name: "hoge", position: { lat: 35.6975644, lng: 139.7633811 } },
-      { name: "foo", position: { lat: 35.69757, lng: 139.76339 } },
-      { name: "aaa", position: { lat: 35.69755, lng: 139.76335 } },
-    ];
+  onInput() {
+    this.places = places.map(place => {
+      place.visible = place.name.includes(this.query);
+      return place;
+    });
+  }
+
+  filtered(): Place[] {
+    return this.places.filter(place => place.name.includes(this.query));
   }
 }

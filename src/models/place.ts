@@ -6,4 +6,5 @@ export interface Position {
 export interface Place {
   name: string;
   position: Position;
+  visible: boolean;
 }
