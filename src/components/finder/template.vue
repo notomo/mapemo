@@ -6,8 +6,7 @@
         </template>
       </div>
       <div>
-        <input @input="onInput" v-model="query" class="search-form">
-        <list-area :places="filtered()"></list-area>
+        <list-area @search="onSearch"></list-area>
       </div>
   </div>
 </template>
@@ -15,10 +14,6 @@
 <script lang="ts" src="./script.ts"></script>
 
 <style scoped>
-
-.search-form {
-  width: 100%;
-}
 
 .wrapper {
   display: flex;
