@@ -6,7 +6,7 @@ Vue.use(Router);
 
 const routes = [{ path: "/", component: app }];
 
-const router = new Router({ routes: routes });
+const router = new Router({ routes: routes, mode: "history" });
 
 new Vue({
   el: "#app",
