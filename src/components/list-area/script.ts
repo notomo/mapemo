@@ -1,8 +1,11 @@
 import Vue from "vue";
 import { Place } from "../../models/place";
+import ListItem from "../list-item/template.vue";
 import { Component, Prop } from "vue-property-decorator";
 
-@Component
+@Component({
+  components: { ListItem },
+})
 export default class ListArea extends Vue {
   @Prop() places!: Place[];
 }

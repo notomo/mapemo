@@ -20,6 +20,71 @@ const places = [
     position: { lat: 35.6966253, lng: 139.7612301 },
     visible: true,
   },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
+  {
+    name: "aaa",
+    position: { lat: 35.6966253, lng: 139.7612301 },
+    visible: true,
+  },
 ];
 
 @Component({

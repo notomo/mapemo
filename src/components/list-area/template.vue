@@ -1,11 +1,20 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="place in this.places">{{ place.name }}</li>
-    </ul>
+  <div class="list">
+    <list-item
+      v-for="(place, key) in this.places"
+      :key="key"
+      :place="place"
+    ></list-item>
   </div>
 </template>
 
 <script lang="ts" src="./script.ts"></script>
 
-<style scoped></style>
+<style scoped>
+
+.list {
+  overflow: auto;
+  height: 483px;
+}
+
+</style>
