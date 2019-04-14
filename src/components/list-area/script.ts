@@ -18,7 +18,7 @@ export default class ListArea extends Vue {
     this.$emit("search", this.places);
   }
 
-  search(): Place[] {
+  filter(): Place[] {
     return this.places.filter(place => place.name.includes(this.query));
   }
 
