@@ -1,14 +1,23 @@
 <template>
-  <div class="item">{{ this.place.name }}</div>
+  <div class="wrapper">
+    <div class="item">{{ this.place.name }}</div>
+  </div>
 </template>
 
 <script lang="ts" src="./script.ts"></script>
 
 <style scoped>
+
+.wrapper {
+  display: table;
+}
+
 .item {
   background-color: white;
-  box-shadow: 0px .25rem 1rem rgba(red, .25);
-  margin: 0.5%;
-  padding: 0.75% 2%;
+  border: solid 1px #333;
+  vertical-align: middle;
+  display: table-cell;
+  padding: 10px;
 }
+
 </style>

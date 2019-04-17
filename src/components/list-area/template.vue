@@ -12,4 +12,9 @@
 
 <style scoped>
 
+.list {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 </style>
