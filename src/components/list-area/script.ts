@@ -8,4 +8,8 @@ import { Component, Prop } from "vue-property-decorator";
 })
 export default class ListArea extends Vue {
   @Prop() places!: Place[];
+
+  onItemClicked(place: Place) {
+    this.$emit("item-clicked", place);
+  }
 }

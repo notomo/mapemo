@@ -10,6 +10,7 @@ import { Component } from "vue-property-decorator";
 export default class App extends Vue {
   protected query = "";
   protected places: Place[] = places;
+  protected selectedPlace: Place | null = null;
 
   onInput() {
     this.places = places.map(place => {
@@ -18,8 +19,12 @@ export default class App extends Vue {
     });
   }
 
-  filter(): Place[] {
+  get filteredPlaces(): Place[] {
     return this.places.filter(place => place.name.includes(this.query));
+  }
+
+  onItemClicked(place: Place) {
+    this.selectedPlace = place;
   }
 }
 

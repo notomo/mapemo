@@ -1,6 +1,12 @@
 <template>
   <div class="wrapper">
-    <div class="item">{{ this.place.name }}</div>
+    <div
+      class="item"
+      @marker-clicked="select"
+      @click="onClick"
+    >
+      {{ this.place.name }}
+    </div>
   </div>
 </template>
 

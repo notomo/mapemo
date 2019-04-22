@@ -1,11 +1,17 @@
 <template>
   <div class="main-wrapper">
     <div class="map-column">
-      <map-area :places="this.places"></map-area>
+      <map-area
+        :places="this.places"
+        :selected-place="this.selectedPlace"
+      ></map-area>
     </div>
     <div class="list-column">
       <input @input="onInput" v-model="query" class="search-form">
-      <list-area :places="filter()"></list-area>
+      <list-area
+        :places="this.filteredPlaces"
+        @item-clicked="onItemClicked"
+      ></list-area>
     </div>
   </div>
 </template>

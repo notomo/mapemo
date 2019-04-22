@@ -1,15 +1,6 @@
 <template>
   <div id="map-wrapper">
     <div id="map" v-on:click="echoCenter()"></div>
-    <template v-if="!!this.map">
-      <map-marker
-        v-for="(place, key) in this.places"
-        :key="key"
-        :map="map"
-        :position="place.position"
-        :visible="place.visible"
-      ></map-marker>
-    </template>
   </div>
 </template>
 

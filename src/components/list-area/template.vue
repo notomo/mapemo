@@ -4,6 +4,7 @@
       v-for="(place, key) in this.places"
       :key="key"
       :place="place"
+      @item-clicked="onItemClicked"
     ></list-item>
   </div>
 </template>
