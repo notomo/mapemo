@@ -24,6 +24,10 @@ export default class App extends Vue {
   }
 
   setSelectedPlace(place: Place) {
+    if (this.selectedPlace !== null && this.selectedPlace.name === place.name) {
+      this.selectedPlace = null;
+      return;
+    }
     this.selectedPlace = place;
   }
 }

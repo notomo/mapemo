@@ -11,6 +11,7 @@
       <input @input="onInput" v-model="query" class="search-form">
       <list-area
         :places="this.filteredPlaces"
+        :selected-place="this.selectedPlace"
         @item-clicked="setSelectedPlace"
       ></list-area>
     </div>

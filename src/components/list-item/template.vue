@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
     <div
-      class="item"
       @click="onClick"
+      class="item"
+      :class="{ active: this.isSelected }"
     >
       {{ this.place.name }}
     </div>
@@ -23,6 +24,11 @@
   vertical-align: middle;
   display: table-cell;
   padding: 10px;
+}
+
+.active {
+  background-color: #ea4335;
+  color: white;
 }
 
 </style>
