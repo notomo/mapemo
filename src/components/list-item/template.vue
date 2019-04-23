@@ -2,7 +2,6 @@
   <div class="wrapper">
     <div
       class="item"
-      @marker-clicked="select"
       @click="onClick"
     >
       {{ this.place.name }}

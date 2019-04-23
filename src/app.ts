@@ -23,7 +23,7 @@ export default class App extends Vue {
     return this.places.filter(place => place.name.includes(this.query));
   }
 
-  onItemClicked(place: Place) {
+  setSelectedPlace(place: Place) {
     this.selectedPlace = place;
   }
 }

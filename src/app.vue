@@ -4,13 +4,14 @@
       <map-area
         :places="this.places"
         :selected-place="this.selectedPlace"
+        @marker-clicked="setSelectedPlace"
       ></map-area>
     </div>
     <div class="list-column">
       <input @input="onInput" v-model="query" class="search-form">
       <list-area
         :places="this.filteredPlaces"
-        @item-clicked="onItemClicked"
+        @item-clicked="setSelectedPlace"
       ></list-area>
     </div>
   </div>

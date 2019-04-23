@@ -6,8 +6,6 @@ import { Component, Prop } from "vue-property-decorator";
 export default class ListItem extends Vue {
   @Prop() place!: Place;
 
-  select(place: Place) {}
-
   onClick() {
     this.$emit("item-clicked", this.place);
   }
