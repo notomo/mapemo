@@ -1,16 +1,17 @@
 <template>
-  <div class="list-wrapper">
+  <div class="list-column-wrapper">
     <input @input="onInput" v-model="query" class="search-form">
-    <div class="list">
-      <list-item
-        v-for="(place, key) in this.places"
-        :key="key"
-        :place="place"
-        :is-selected="isPlaceSelected(place)"
-        @item-clicked="onItemClicked"
-      ></list-item>
-    </div>
-    <div class="end"></div>
+    <vue-scroll class="scroll-area" :ops="{ bar: { background: '#000000', opacity: 0.4 }}">
+      <div class="list">
+        <list-item
+          v-for="(place, key) in this.places"
+          :key="key"
+          :place="place"
+          :is-selected="isPlaceSelected(place)"
+          @item-clicked="onItemClicked"
+        ></list-item>
+      </div>
+    </vue-scroll>
   </div>
 </template>
 
@@ -18,7 +19,7 @@
 
 <style scoped>
 
-.list-wrapper {
+.list-column-wrapper {
   display: flex;
   flex-flow: column nowrap;
   height: 100vh;
@@ -29,10 +30,13 @@
   flex: 0 0 40px;
 }
 
+.scroll-area {
+  overflow-y: scroll;
+}
+
 .list {
   display: flex;
   flex-flow: column nowrap;
-  overflow-y: scroll;
 }
 
 </style>
