@@ -7,8 +7,13 @@ import { Component, Prop } from "vue-property-decorator";
   components: { ListItem },
 })
 export default class ListArea extends Vue {
+  protected query = "";
   @Prop() places!: Place[];
   @Prop() selectedPlace!: Place | null;
+
+  onInput() {
+    this.$emit("search-form-changed", this.query);
+  }
 
   onItemClicked(place: Place) {
     this.$emit("item-clicked", place);

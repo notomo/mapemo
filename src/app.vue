@@ -8,11 +8,11 @@
       ></map-area>
     </div>
     <div class="list-column">
-      <input @input="onInput" v-model="query" class="search-form">
       <list-area
         :places="this.filteredPlaces"
         :selected-place="this.selectedPlace"
         @item-clicked="setSelectedPlace"
+        @search-form-changed="onSearchFormChanged"
       ></list-area>
     </div>
   </div>
@@ -21,9 +21,6 @@
 <script lang="ts" src="./app.ts"></script>
 
 <style scoped>
-
-.search-form {
-}
 
 .main-wrapper {
   display: flex;
@@ -36,8 +33,6 @@
 .list-column {
   flex: 1;
   background-color: gray;
-  height: 100vh;
-  overflow-y: scroll;
 }
 
 </style>

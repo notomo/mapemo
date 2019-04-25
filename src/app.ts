@@ -8,19 +8,11 @@ import { Component } from "vue-property-decorator";
   components: { MapArea, ListArea },
 })
 export default class App extends Vue {
-  protected query = "";
   protected places: Place[] = places;
   protected selectedPlace: Place | null = null;
 
-  onInput() {
-    this.places = places.map(place => {
-      place.visible = place.name.includes(this.query);
-      return place;
-    });
-  }
-
   get filteredPlaces(): Place[] {
-    return this.places.filter(place => place.name.includes(this.query));
+    return this.places.filter(place => place.visible);
   }
 
   setSelectedPlace(place: Place) {
@@ -29,6 +21,13 @@ export default class App extends Vue {
       return;
     }
     this.selectedPlace = place;
+  }
+
+  onSearchFormChanged(query: string) {
+    this.places = places.map(place => {
+      place.visible = place.name.includes(query);
+      return place;
+    });
   }
 }
 
