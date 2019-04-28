@@ -20,13 +20,23 @@
 <style scoped>
 
 #map-wrapper {
-  height: 100vh;
+  height: 60vh;
   width: 100%;
 }
 
 #map {
-  height: 100vh;
+  height: 60vh;
   width: 100%;
+}
+
+@media (min-width: 1280px) {
+  #map-wrapper {
+    height: 100vh;
+  }
+
+  #map {
+    height: 100vh;
+  }
 }
 
 </style>

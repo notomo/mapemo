@@ -24,6 +24,7 @@
 
 .main-wrapper {
   display: flex;
+  flex-flow: column nowrap;
 }
 
 .map-column {
@@ -33,6 +34,12 @@
 .list-column {
   flex: 1;
   background-color: #a0a0a0;
+}
+
+@media screen and (min-width: 1280px) {
+  .main-wrapper {
+    flex-flow: row nowrap;
+  }
 }
 
 </style>
