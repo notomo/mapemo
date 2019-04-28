@@ -32,7 +32,7 @@
 
 .list-column {
   flex: 1;
-  background-color: gray;
+  background-color: #a0a0a0;
 }
 
 </style>

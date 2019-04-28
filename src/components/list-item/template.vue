@@ -19,7 +19,7 @@
 }
 
 .item {
-  background-color: white;
+  background-color: #f0f0f0;
   border: solid 1px #333;
   vertical-align: middle;
   display: table-cell;
@@ -27,8 +27,7 @@
 }
 
 .active {
-  background-color: #ea4335;
-  color: white;
+  background-color: #ffd1b6;
 }
 
 </style>

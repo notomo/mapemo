@@ -1,6 +1,9 @@
 <template>
   <div class="list-column-wrapper">
-    <input @input="onInput" v-model="query" class="search-form">
+    <div class="form-wrapper">
+      <i class="fas fa-search fa-lg"></i>
+      <input @input="onInput" v-model="query" class="search-form">
+    </div>
     <vue-scroll class="scroll-area" :ops="{ bar: { background: '#000000', opacity: 0.4 }}">
       <div class="list">
         <list-item
@@ -25,9 +28,27 @@
   height: 100vh;
 }
 
+.form-wrapper i  {
+  margin: 10px;
+}
+
+.form-wrapper {
+  flex: 0 0 60px;
+	background: white;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  border: solid 1px #333;
+}
+
+.form-wrapper i {
+  align-self: center;
+}
+
 .search-form {
-  background-color: #f0f0f0;
-  flex: 0 0 40px;
+  border: none;
+  outline: none;
+  flex-grow: 1;
 }
 
 .scroll-area {
