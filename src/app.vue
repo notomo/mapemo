@@ -29,16 +29,26 @@
 
 .map-column {
   flex: 2;
+  height: 60vh;
 }
 
 .list-column {
   flex: 1;
   background-color: #a0a0a0;
+  height: 40vh;
 }
 
 @media screen and (min-width: 1280px) {
   .main-wrapper {
     flex-flow: row nowrap;
+  }
+
+  .map-column {
+    height: 100vh;
+  }
+
+  .list-column {
+    height: 100vh;
   }
 }
 

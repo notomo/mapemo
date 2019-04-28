@@ -25,7 +25,7 @@
 .list-column-wrapper {
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
+  height: 100%;
 }
 
 .form-wrapper i  {
