@@ -23,7 +23,7 @@
   border: solid 1px #333;
   vertical-align: middle;
   display: table-cell;
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 .active {
