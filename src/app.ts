@@ -24,8 +24,9 @@ export default class App extends Vue {
   }
 
   onSearchFormChanged(query: string) {
+    const trimmedQuery = query.trim();
     this.places = places.map(place => {
-      place.visible = place.name.includes(query);
+      place.visible = place.name.includes(trimmedQuery);
       return place;
     });
     if (this.selectedPlace === null) {
