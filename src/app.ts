@@ -28,6 +28,17 @@ export default class App extends Vue {
       place.visible = place.name.includes(query);
       return place;
     });
+    if (this.selectedPlace === null) {
+      return;
+    }
+
+    const selectedName = this.selectedPlace.name;
+    if (
+      this.places.filter(place => place.visible && place.name === selectedName)
+        .length === 0
+    ) {
+      this.selectedPlace = null;
+    }
   }
 }
 
