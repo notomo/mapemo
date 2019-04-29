@@ -6,9 +6,13 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
-    "setup": "npm install && npm run build"
+    "setup": "npm install && npm run build && gcloud init --console-only",
+    "update-cors": "gsutil cors set cors.json gs://mapemo-store.appspot.com/",
+    "upload-data": "gsutil cp data.json gs://mapemo-store.appspot.com/"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "firebase": "^5.10.1",
     "googlemaps": "^1.12.0",
     "vue": "^2.6.10",
     "vue-property-decorator": "^8.1.0",

@@ -3,13 +3,26 @@ import MapArea from "./components/map-area/template.vue";
 import ListArea from "./components/list-area/template.vue";
 import { Place } from "./models/place";
 import { Component } from "vue-property-decorator";
+import Axios from "axios";
+import { firebase } from "./firebase";
 
 @Component({
   components: { MapArea, ListArea },
 })
 export default class App extends Vue {
-  protected places: Place[] = places;
+  protected allPlaces: Place[] = [];
+  protected places: Place[] = [];
+  protected loaded = false;
   protected selectedPlace: Place | null = null;
+
+  async mounted() {
+    const file = firebase.storage().ref("data.json");
+    const url = await file.getDownloadURL();
+    const response = await Axios.create().get<Place[]>(url);
+    this.allPlaces = response.data;
+    this.places = this.allPlaces;
+    this.loaded = true;
+  }
 
   get filteredPlaces(): Place[] {
     return this.places.filter(place => place.visible);
@@ -25,7 +38,7 @@ export default class App extends Vue {
 
   onSearchFormChanged(query: string) {
     const trimmedQuery = query.trim();
-    this.places = places.map(place => {
+    this.places = this.allPlaces.map(place => {
       place.visible = place.name.includes(trimmedQuery);
       return place;
     });
@@ -42,191 +55,3 @@ export default class App extends Vue {
     }
   }
 }
-
-const places = [
-  {
-    name: "hoge",
-    position: { lat: 35.6946888, lng: 139.7616235 },
-    visible: true,
-  },
-  {
-    name: "foo",
-    position: { lat: 35.6960163, lng: 139.7640851 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-  {
-    name: "aaa",
-    position: { lat: 35.6966253, lng: 139.7612301 },
-    visible: true,
-  },
-];

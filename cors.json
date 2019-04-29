@@ -1,0 +1,11 @@
+[
+    {
+        "origin": [
+            "http://192.168.33.10:*"
+        ],
+        "method": [
+            "GET"
+        ],
+        "maxAgeSeconds": 60
+    }
+]
