@@ -15,7 +15,6 @@ export default class MapArea extends Vue {
   @Prop() selectedPlace!: Place | null;
 
   protected map: null | google.maps.Map = null;
-  protected beforeWidth: number = 0;
 
   echoCenter() {
     if (this.map === null) {
@@ -33,18 +32,6 @@ export default class MapArea extends Vue {
       },
       mapTypeControl: false,
       zoom: Number(this.$route.query.zoom) || defaultZoom,
-    });
-
-    this.beforeWidth = window.innerWidth;
-    window.addEventListener("resize", () => {
-      if (
-        (this.beforeWidth >= 1280 && window.innerWidth >= 1280) ||
-        (this.beforeWidth <= 1280 && window.innerWidth <= 1280)
-      ) {
-        return;
-      }
-      this.beforeWidth = window.innerWidth;
-      google.maps.event.trigger(this.map, "redraw");
     });
   }
 

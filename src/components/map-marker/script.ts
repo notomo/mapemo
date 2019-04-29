@@ -11,6 +11,7 @@ export default class MapMarker extends Vue {
 
   protected marker: null | google.maps.Marker = null;
   protected infoWindow: null | google.maps.InfoWindow = null;
+  protected eventListener: null | google.maps.MapsEventListener = null;
 
   mounted() {
     const marker = new google.maps.Marker({
@@ -24,11 +25,22 @@ export default class MapMarker extends Vue {
       content: this.place.name,
     });
     this.infoWindow = infoWindow;
+    this.eventListener = this.marker.addListener("click", this.onClicked);
+  }
 
-    this.marker.addListener("click", () => {
-      infoWindow.open(this.map, marker);
-      this.$emit("marker-clicked", this.place);
-    });
+  beforeDestroy() {
+    if (this.eventListener === null) {
+      return;
+    }
+    google.maps.event.removeListener(this.eventListener);
+  }
+
+  onClicked() {
+    if (this.infoWindow === null || this.marker === null) {
+      return;
+    }
+    this.infoWindow.open(this.map, this.marker);
+    this.$emit("marker-clicked", this.place);
   }
 
   @Watch("selectedPlace")
