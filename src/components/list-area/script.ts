@@ -5,9 +5,10 @@ import { Component, Prop } from "vue-property-decorator";
 import VueScroll from "vuescroll";
 import { firebaseApp } from "./../../firebase";
 import Axios from "axios";
+import SearchIcon from "./search.svg";
 
 @Component({
-  components: { ListItem, VueScroll },
+  components: { ListItem, VueScroll, SearchIcon },
 })
 export default class ListArea extends Vue {
   protected query = "";

@@ -1,7 +1,7 @@
 <template>
   <div class="list-column-wrapper">
     <div class="form-wrapper">
-      <i class="fas fa-search fa-lg"></i>
+      <search-icon class="search-icon"></search-icon/>
       <input @input="onInput" v-model="query" class="search-form">
     </div>
     <vue-scroll class="scroll-area" :ops="{ bar: { background: '#000000', opacity: 0.4 }}">
@@ -28,10 +28,6 @@
   height: 100%;
 }
 
-.form-wrapper i  {
-  margin: 10px;
-}
-
 .form-wrapper {
   flex: 0 0 60px;
 	background: white;
@@ -41,8 +37,12 @@
   border: solid 1px #333;
 }
 
-.form-wrapper i {
+.search-icon {
+  margin: 10px;
   align-self: center;
+  flex-grow: 0;
+  flex-basis: 32px;
+  height: 100%;
 }
 
 .search-form {
