@@ -3,7 +3,7 @@ import { Place } from "../../models/place";
 import ListItem from "../list-item/template.vue";
 import { Component, Prop } from "vue-property-decorator";
 import VueScroll from "vuescroll";
-import { firebase } from "./../../firebase";
+import { firebaseApp } from "./../../firebase";
 import Axios from "axios";
 
 @Component({
@@ -36,11 +36,37 @@ export default class ListArea extends Vue {
   }
 
   async mounted() {
-    const file = firebase.storage().ref("data.json");
-    const url = await file.getDownloadURL();
-    const response = await Axios.create().get<Place[]>(url);
-    const places = response.data;
-    this.allPlaces = places;
-    this.$emit("places-changed", places);
+    const appScriptElement = document.createElement("script");
+    appScriptElement.setAttribute("type", "text/javascript");
+    appScriptElement.setAttribute(
+      "src",
+      "https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"
+    );
+    appScriptElement.async = true;
+
+    const storageScriptElement = document.createElement("script");
+    storageScriptElement.setAttribute("type", "text/javascript");
+    storageScriptElement.setAttribute(
+      "src",
+      "https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"
+    );
+    storageScriptElement.async = true;
+
+    appScriptElement.onload = async () => {
+      document.head.appendChild(storageScriptElement);
+    };
+
+    storageScriptElement.onload = async () => {
+      const file = firebaseApp()
+        .storage()
+        .ref("data.json");
+      const url = await file.getDownloadURL();
+      const response = await Axios.create().get<Place[]>(url);
+      const places = response.data;
+      this.allPlaces = places;
+      this.$emit("places-changed", places);
+    };
+
+    document.head.appendChild(appScriptElement);
   }
 }

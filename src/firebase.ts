@@ -1,4 +1,4 @@
-import * as firebaseApp from "firebase/app";
+import * as app from "firebase/app";
 import "firebase/storage";
 
 const config = {
@@ -10,6 +10,6 @@ const config = {
   messagingSenderId: "207047600556",
 };
 
-export const firebase = !firebaseApp.apps.length
-  ? firebaseApp.initializeApp(config)
-  : firebaseApp.app();
+export const firebaseApp = () => {
+  return !app.apps.length ? app.initializeApp(config) : app.app();
+};
