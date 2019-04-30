@@ -25,14 +25,24 @@ export default class MapArea extends Vue {
   }
 
   mounted() {
-    this.map = new google.maps.Map(document.getElementById("map"), {
-      center: {
-        lat: Number(this.$route.query.lat) || defaultLat,
-        lng: Number(this.$route.query.lng) || defaultLng,
-      },
-      mapTypeControl: false,
-      zoom: Number(this.$route.query.zoom) || defaultZoom,
-    });
+    const scriptElement = document.createElement("script");
+    scriptElement.setAttribute("type", "text/javascript");
+    scriptElement.setAttribute(
+      "src",
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyBq5DSPVJrF_7xlXTytsuCnhaqvvKWQhI4"
+    );
+    scriptElement.async = true;
+    scriptElement.onload = () => {
+      this.map = new google.maps.Map(document.getElementById("map"), {
+        center: {
+          lat: Number(this.$route.query.lat) || defaultLat,
+          lng: Number(this.$route.query.lng) || defaultLng,
+        },
+        mapTypeControl: false,
+        zoom: Number(this.$route.query.zoom) || defaultZoom,
+      });
+    };
+    document.head.appendChild(scriptElement);
   }
 
   onMarkerClicked(place: Place) {
