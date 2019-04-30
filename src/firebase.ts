@@ -2,12 +2,12 @@ import * as firebaseApp from "firebase/app";
 import "firebase/storage";
 
 const config = {
-  apiKey: "AIzaSyCUoVYAVO47sX1oF-802tzlIos7TcChmLs",
-  authDomain: "mapemo-store.firebaseapp.com",
-  databaseURL: "https://mapemo-store.firebaseio.com",
-  projectId: "mapemo-store",
-  storageBucket: "mapemo-store.appspot.com",
-  messagingSenderId: "48166676660",
+  apiKey: "AIzaSyDBuB-6IWyFiouSkudtCHlJmgRgJ2doTw8",
+  authDomain: "mapemo.firebaseapp.com",
+  databaseURL: "https://mapemo.firebaseio.com",
+  projectId: "mapemo",
+  storageBucket: "mapemo.appspot.com",
+  messagingSenderId: "207047600556",
 };
 
 export const firebase = !firebaseApp.apps.length
