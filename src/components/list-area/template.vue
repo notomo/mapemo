@@ -50,6 +50,7 @@
   border: none;
   outline: none;
   flex-grow: 1;
+  width: 100%;
 }
 
 .scroll-area {

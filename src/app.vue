@@ -28,7 +28,7 @@
 }
 
 .map-column {
-  flex: 2 0 60%;
+  flex: 2;
   height: 60vh;
 }
 
@@ -45,10 +45,12 @@
 
   .map-column {
     height: 100vh;
+    width: 60vw;
   }
 
   .list-column {
     height: 100vh;
+    width: 40vw;
   }
 }
 
