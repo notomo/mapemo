@@ -12,7 +12,8 @@
     "setup-firebase": "npm install -g firebase-tools && firebase login --no-localhost && firebase init",
     "serve": "firebase serve -p 5000 -o 0.0.0.0",
     "deploy": "webpack --mode production && firebase deploy",
-    "deploy-storage-rule": "firebase deploy --only storage"
+    "deploy-storage-rule": "firebase deploy --only storage",
+    "analyze": "webpack-bundle-analyzer ./dist/stats.json --mode static"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -28,12 +29,14 @@
     "@types/node": "^11.13.8",
     "css-loader": "^2.1.1",
     "prettier": "^1.16.4",
+    "stats-webpack-plugin": "^0.7.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.4.1",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.0"
   }
 }

@@ -1,4 +1,5 @@
 const { VueLoaderPlugin } = require("vue-loader");
+const StatsPlugin = require("stats-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = (env, options) => {
@@ -45,7 +46,13 @@ module.exports = (env, options) => {
         vue$: "vue/dist/vue.esm.js",
       },
     },
-    plugins: [new VueLoaderPlugin(), new webpack.EnvironmentPlugin(envVars)],
+    plugins: [
+      new VueLoaderPlugin(),
+      new webpack.EnvironmentPlugin(envVars),
+      new StatsPlugin("stats.json", {
+        chunkModules: true,
+      }),
+    ],
   };
 
   return config;

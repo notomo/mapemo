@@ -3,6 +3,7 @@
     "public": "dist",
     "ignore": [
       "firebase.json",
+      "stats.json",
       "**/.*",
       "**/node_modules/**"
     ],
