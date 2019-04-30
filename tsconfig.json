@@ -19,7 +19,8 @@
         ],
         "baseUrl": "src",
         "types": [
-            "googlemaps"
+            "googlemaps",
+            "node"
         ]
     }
 }

@@ -29,7 +29,8 @@ export default class MapArea extends Vue {
     scriptElement.setAttribute("type", "text/javascript");
     scriptElement.setAttribute(
       "src",
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyBq5DSPVJrF_7xlXTytsuCnhaqvvKWQhI4"
+      "https://maps.googleapis.com/maps/api/js?key=" +
+        process.env.GOOGLE_MAP_API_KEY
     );
     scriptElement.async = true;
     scriptElement.onload = () => {

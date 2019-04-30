@@ -4,14 +4,14 @@
   "version": "0.0.1",
   "description": "map with memo",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack -w",
+    "build": "webpack --mode development",
+    "watch": "webpack -w --mode development",
     "setup": "npm install && npm run build && gcloud init --console-only",
     "update-cors": "gsutil cors set cors.json gs://mapemo.appspot.com/",
     "upload-data": "gsutil cp data.json gs://mapemo.appspot.com/",
     "setup-firebase": "npm install -g firebase-tools && firebase login --no-localhost && firebase init",
     "serve": "firebase serve -p 5000 -o 0.0.0.0",
-    "deploy": "firebase deploy",
+    "deploy": "webpack --mode production && firebase deploy",
     "deploy-storage-rule": "firebase deploy --only storage"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@types/googlemaps": "^3.30.19",
+    "@types/node": "^11.13.8",
     "css-loader": "^2.1.1",
     "prettier": "^1.16.4",
     "ts-loader": "^5.3.3",
