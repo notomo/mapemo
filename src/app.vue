@@ -28,7 +28,7 @@
 }
 
 .map-column {
-  flex: 2;
+  flex: 2 0 60%;
   height: 60vh;
 }
 

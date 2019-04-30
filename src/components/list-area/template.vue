@@ -43,6 +43,7 @@
   flex-grow: 0;
   flex-basis: 32px;
   height: 100%;
+  min-width: 32px;
 }
 
 .search-form {
