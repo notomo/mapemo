@@ -5,7 +5,7 @@
       <input @input="onInput" v-model="query" class="search-form">
     </div>
     <vue-scroll class="scroll-area" :ops="{ bar: { background: '#000000', opacity: 0.4 }}">
-      <div class="list">
+      <main class="list">
         <list-item
           v-for="(place, key) in this.places"
           :key="key"
@@ -13,7 +13,7 @@
           :is-selected="isPlaceSelected(place)"
           @item-clicked="onItemClicked"
         ></list-item>
-      </div>
+      </main>
     </vue-scroll>
   </div>
 </template>
