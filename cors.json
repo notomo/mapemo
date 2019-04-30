@@ -1,6 +1,7 @@
 [
     {
         "origin": [
+            "http://localhost:8080",
             "http://192.168.33.10:*",
             "https://mapemo.firebaseapp.com"
         ],
