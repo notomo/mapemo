@@ -24,6 +24,7 @@
   vertical-align: middle;
   display: table-cell;
   padding: 10px 20px;
+  width: 100vw;
 }
 
 .active {
