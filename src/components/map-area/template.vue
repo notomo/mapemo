@@ -22,6 +22,7 @@
 #map-wrapper {
   height: 100%;
   width: 100%;
+  min-height: 60vh;
 }
 
 #map {

@@ -33,7 +33,6 @@
 }
 
 .list-column {
-  flex: 1;
   background-color: #a0a0a0;
   height: 40vh;
 }
