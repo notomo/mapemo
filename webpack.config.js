@@ -14,6 +14,18 @@ module.exports = (env, options) => {
     };
   }
 
+  const plugins = [
+    new VueLoaderPlugin(),
+    new webpack.EnvironmentPlugin(envVars),
+  ];
+  if (env !== undefined && "ANALYZE" in env) {
+    plugins.push(
+      new StatsPlugin("stats.json", {
+        chunkModules: true,
+      })
+    );
+  }
+
   const config = {
     mode: options.mode,
     entry: "./src/entry.ts",
@@ -50,13 +62,7 @@ module.exports = (env, options) => {
         vue$: "vue/dist/vue.esm.js",
       },
     },
-    plugins: [
-      new VueLoaderPlugin(),
-      new webpack.EnvironmentPlugin(envVars),
-      new StatsPlugin("stats.json", {
-        chunkModules: true,
-      }),
-    ],
+    plugins: plugins,
   };
 
   return config;

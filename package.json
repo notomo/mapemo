@@ -14,7 +14,7 @@
     "serve": "firebase serve -p 5000 -o 0.0.0.0",
     "deploy": "webpack --mode production && firebase deploy",
     "deploy-storage-rule": "firebase deploy --only storage",
-    "analyze": "webpack-bundle-analyzer ./dist/stats.json --mode static"
+    "analyze": "webpack --mode production --env.ANALYZE && webpack-bundle-analyzer ./dist/stats.json --mode static"
   },
   "dependencies": {
     "axios": "^0.18.0",
