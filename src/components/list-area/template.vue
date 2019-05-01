@@ -2,7 +2,7 @@
   <div class="list-column-wrapper">
     <div class="form-wrapper">
       <search-icon class="search-icon"></search-icon/>
-      <input @input="onInput" v-model="query" class="search-form">
+      <input @input="onInput" v-model="query" class="search-form" size="1">
     </div>
     <vue-scroll class="scroll-area" :ops="{ bar: { background: '#000000', opacity: 0.4 }}">
       <main class="list">
