@@ -3,5 +3,6 @@
 /firebase-debug.log
 /dist/*
 !/dist/index.html
+!/dist/robots.txt
 /.firebase
 /report.html
