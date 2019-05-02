@@ -4,7 +4,7 @@
       <map-area
         :places="this.places"
         :selected-place="this.selectedPlace"
-        @marker-clicked="setSelectedPlace"
+        @marker-updated="setSelectedPlace"
       ></map-area>
     </div>
     <div class="list-column">

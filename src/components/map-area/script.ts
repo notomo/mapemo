@@ -46,7 +46,7 @@ export default class MapArea extends Vue {
     document.head.appendChild(scriptElement);
   }
 
-  onMarkerClicked(place: Place) {
-    this.$emit("marker-clicked", place);
+  onMarkerUpdated(place: Place | null) {
+    this.$emit("marker-updated", place);
   }
 }

@@ -15,8 +15,12 @@ export default class App extends Vue {
     return this.places.filter(place => place.visible);
   }
 
-  setSelectedPlace(place: Place) {
-    if (this.selectedPlace !== null && this.selectedPlace.name === place.name) {
+  setSelectedPlace(place: Place | null) {
+    if (
+      this.selectedPlace !== null &&
+      place !== null &&
+      this.selectedPlace.name === place.name
+    ) {
       this.selectedPlace = null;
       return;
     }

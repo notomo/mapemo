@@ -9,7 +9,7 @@
         :place="place"
         :visible="place.visible"
         :selected-place="selectedPlace"
-        @marker-clicked="onMarkerClicked"
+        @marker-updated="onMarkerUpdated"
       ></map-marker>
     </template>
   </div>

@@ -11,7 +11,8 @@ export default class MapMarker extends Vue {
 
   protected marker: null | google.maps.Marker = null;
   protected infoWindow: null | google.maps.InfoWindow = null;
-  protected eventListener: null | google.maps.MapsEventListener = null;
+  protected markerEventListener: null | google.maps.MapsEventListener = null;
+  protected infoWindowEventListener: null | google.maps.MapsEventListener = null;
 
   mounted() {
     const marker = new google.maps.Marker({
@@ -25,14 +26,26 @@ export default class MapMarker extends Vue {
       content: this.place.name,
     });
     this.infoWindow = infoWindow;
-    this.eventListener = this.marker.addListener("click", this.onClicked);
+    this.markerEventListener = this.marker.addListener("click", this.onClicked);
+    this.infoWindowEventListener = this.infoWindow.addListener(
+      "closeclick",
+      this.onInfoWindowClosed
+    );
   }
 
   beforeDestroy() {
-    if (this.eventListener === null) {
+    if (
+      this.markerEventListener === null ||
+      this.infoWindowEventListener === null
+    ) {
       return;
     }
-    google.maps.event.removeListener(this.eventListener);
+    google.maps.event.removeListener(this.markerEventListener);
+    google.maps.event.removeListener(this.infoWindowEventListener);
+  }
+
+  onInfoWindowClosed() {
+    this.$emit("marker-updated", null);
   }
 
   onClicked() {
@@ -40,7 +53,7 @@ export default class MapMarker extends Vue {
       return;
     }
     this.infoWindow.open(this.map, this.marker);
-    this.$emit("marker-clicked", this.place);
+    this.$emit("marker-updated", this.place);
   }
 
   @Watch("selectedPlace")
