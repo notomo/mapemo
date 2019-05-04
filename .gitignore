@@ -6,3 +6,5 @@
 !/dist/robots.txt
 /.firebase
 /report.html
+/tool/input.json
+/tool/output.json
