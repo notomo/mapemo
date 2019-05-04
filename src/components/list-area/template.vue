@@ -29,7 +29,7 @@
 }
 
 .form-wrapper {
-  flex: 0 0 60px;
+  flex: 0 0 45px;
 	background: white;
   display: flex;
   flex-flow: row nowrap;
@@ -38,7 +38,7 @@
 }
 
 .search-icon {
-  margin: 10px;
+  margin: 8px;
   align-self: center;
   flex-grow: 0;
   flex-basis: 32px;
