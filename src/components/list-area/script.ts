@@ -24,6 +24,16 @@ export default class ListArea extends Vue {
       return place;
     });
     this.$emit("places-changed", places);
+
+    if (this.selectedPlace === null) {
+      return;
+    }
+    for (const place of places) {
+      if (!place.visible && place.equals(this.selectedPlace)) {
+        this.$emit("selected-place-changed", null);
+        break;
+      }
+    }
   }
 
   onItemClicked(place: ViewPlace) {

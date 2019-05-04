@@ -12,6 +12,7 @@
         :places="this.filteredPlaces"
         :selected-place="this.selectedPlace"
         @item-clicked="setSelectedPlace"
+        @selected-place-changed="setSelectedPlace"
         @places-changed="setPlaces"
       ></list-area>
     </div>
