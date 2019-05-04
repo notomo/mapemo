@@ -1,25 +1,25 @@
 import Vue from "vue";
 import MapArea from "./components/map-area/template.vue";
 import ListArea from "./components/list-area/template.vue";
-import { Place } from "./models/place";
+import { ViewPlace } from "./models/place";
 import { Component } from "vue-property-decorator";
 
 @Component({
   components: { MapArea, ListArea },
 })
 export default class App extends Vue {
-  protected places: Place[] = [];
-  protected selectedPlace: Place | null = null;
+  protected places: ViewPlace[] = [];
+  protected selectedPlace: ViewPlace | null = null;
 
-  get filteredPlaces(): Place[] {
+  get filteredPlaces(): ViewPlace[] {
     return this.places.filter(place => place.visible);
   }
 
-  setSelectedPlace(place: Place | null) {
+  setSelectedPlace(place: ViewPlace | null) {
     if (
       this.selectedPlace !== null &&
       place !== null &&
-      this.selectedPlace.name === place.name
+      this.selectedPlace.equals(place)
     ) {
       this.selectedPlace = null;
       return;
@@ -27,16 +27,15 @@ export default class App extends Vue {
     this.selectedPlace = place;
   }
 
-  setPlaces(places: Place[]) {
+  setPlaces(places: ViewPlace[]) {
     this.places = places;
     if (this.selectedPlace === null) {
       return;
     }
 
-    const selectedName = this.selectedPlace.name;
+    const equals = this.selectedPlace.equals;
     if (
-      this.places.filter(place => place.visible && place.name === selectedName)
-        .length === 0
+      this.places.filter(place => place.visible && equals(place)).length === 0
     ) {
       this.selectedPlace = null;
     }

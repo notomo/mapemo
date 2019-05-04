@@ -3,8 +3,8 @@
     <div id="map" v-on:click="echoCenter()"></div>
     <template v-if="!!this.map">
       <map-marker
-        v-for="(place, key) in this.places"
-        :key="key"
+        v-for="place in this.places"
+        :key="place.id"
         :map="map"
         :place="place"
         :visible="place.visible"

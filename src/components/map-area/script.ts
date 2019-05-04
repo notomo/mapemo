@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { Place } from "../../models/place";
+import { ViewPlace } from "../../models/place";
 import MapMarker from "../map-marker/template.vue";
 import { Component, Prop } from "vue-property-decorator";
 
@@ -11,8 +11,8 @@ const defaultZoom = 16;
   components: { MapMarker },
 })
 export default class MapArea extends Vue {
-  @Prop() places!: Place[];
-  @Prop() selectedPlace!: Place | null;
+  @Prop() places!: ViewPlace[];
+  @Prop() selectedPlace!: ViewPlace | null;
 
   protected map: null | google.maps.Map = null;
 
@@ -46,7 +46,7 @@ export default class MapArea extends Vue {
     document.head.appendChild(scriptElement);
   }
 
-  onMarkerUpdated(place: Place | null) {
+  onMarkerUpdated(place: ViewPlace | null) {
     this.$emit("marker-updated", place);
   }
 }

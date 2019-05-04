@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { Place } from "../../models/place";
+import { ViewPlace, Place, ViewPlaceImpl } from "../../models/place";
 import ListItem from "../list-item/template.vue";
 import { Component, Prop } from "vue-property-decorator";
 import VueScroll from "vuescroll";
@@ -12,10 +12,10 @@ import SearchIcon from "./search.svg";
 })
 export default class ListArea extends Vue {
   protected query = "";
-  protected allPlaces: Place[] = [];
+  protected allPlaces: ViewPlace[] = [];
 
-  @Prop() places!: Place[];
-  @Prop() selectedPlace!: Place | null;
+  @Prop() places!: ViewPlace[];
+  @Prop() selectedPlace!: ViewPlace | null;
 
   onInput() {
     const trimmedQuery = this.query.trim();
@@ -26,14 +26,12 @@ export default class ListArea extends Vue {
     this.$emit("places-changed", places);
   }
 
-  onItemClicked(place: Place) {
+  onItemClicked(place: ViewPlace) {
     this.$emit("item-clicked", place);
   }
 
-  isPlaceSelected(place: Place): boolean {
-    return (
-      this.selectedPlace !== null && place.name === this.selectedPlace.name
-    );
+  isPlaceSelected(place: ViewPlace): boolean {
+    return this.selectedPlace !== null && this.selectedPlace.equals(place);
   }
 
   async mounted() {
@@ -63,7 +61,9 @@ export default class ListArea extends Vue {
         .ref("data.json");
       const url = await file.getDownloadURL();
       const response = await Axios.create().get<Place[]>(url);
-      const places = response.data;
+      const places = response.data.map(place => {
+        return new ViewPlaceImpl(place.id, place.name, place.position, true);
+      });
       this.allPlaces = places;
       this.$emit("places-changed", places);
     };

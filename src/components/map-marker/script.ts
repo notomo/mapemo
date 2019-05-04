@@ -1,13 +1,13 @@
 import Vue from "vue";
-import { Place } from "../../models/place";
+import { ViewPlace } from "../../models/place";
 import { Component, Prop, Watch } from "vue-property-decorator";
 
 @Component
 export default class MapMarker extends Vue {
   @Prop() map!: google.maps.Map;
-  @Prop() place!: Place;
+  @Prop() place!: ViewPlace;
   @Prop() visible!: boolean;
-  @Prop() selectedPlace!: Place | null;
+  @Prop() selectedPlace!: ViewPlace | null;
 
   protected marker: null | google.maps.Marker = null;
   protected infoWindow: null | google.maps.InfoWindow = null;
@@ -57,14 +57,14 @@ export default class MapMarker extends Vue {
   }
 
   @Watch("selectedPlace")
-  updateSelectedPlace(newPlace: Place | null, oldPlace: Place | null) {
+  updateSelectedPlace(newPlace: ViewPlace | null, _oldPlace: ViewPlace | null) {
     if (this.marker === null || this.infoWindow == null) {
       return;
     }
     if (
       newPlace === null ||
       !newPlace.visible ||
-      newPlace.name !== this.place.name
+      !newPlace.equals(this.place)
     ) {
       this.infoWindow.close();
     } else {

@@ -7,8 +7,8 @@
     <vue-scroll class="scroll-area" :ops="{ bar: { background: '#000000', opacity: 0.4 }}">
       <main class="list">
         <list-item
-          v-for="(place, key) in this.places"
-          :key="key"
+          v-for="place in this.places"
+          :key="place.id"
           :place="place"
           :is-selected="isPlaceSelected(place)"
           @item-clicked="onItemClicked"
