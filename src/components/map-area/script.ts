@@ -16,14 +16,6 @@ export default class MapArea extends Vue {
 
   protected map: null | google.maps.Map = null;
 
-  echoCenter() {
-    if (this.map === null) {
-      return;
-    }
-    const center = this.map.getCenter();
-    console.log({ lat: center.lat(), lng: center.lng() });
-  }
-
   mounted() {
     const scriptElement = document.createElement("script");
     scriptElement.setAttribute("type", "text/javascript");
