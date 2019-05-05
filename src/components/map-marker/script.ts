@@ -22,8 +22,14 @@ export default class MapMarker extends Vue {
     });
     this.marker = marker;
 
+    const searchLink = document.createElement("a");
+    searchLink.href =
+      "https://www.google.co.jp/search?hl=ja&q=" + this.place.name;
+    searchLink.text = this.place.name;
+    searchLink.target = "blank";
+
     const infoWindow = new google.maps.InfoWindow({
-      content: this.place.name,
+      content: searchLink,
     });
     this.infoWindow = infoWindow;
     this.markerEventListener = this.marker.addListener("click", this.onClicked);
