@@ -8,7 +8,7 @@
         :map="map"
         :place="place"
         :visible="place.visible"
-        :selected-place="selectedPlace"
+        :is-selected="isPlaceSelected(place)"
         @marker-updated="onMarkerUpdated"
       ></map-marker>
     </template>

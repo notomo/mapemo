@@ -76,6 +76,14 @@ export default class ListArea extends Vue {
       });
       this.allPlaces = places;
       this.$emit("places-changed", places);
+
+      const selectedPlaceId = this.$route.params.placeId;
+      for (const place of places) {
+        if (place.id === selectedPlaceId) {
+          this.$emit("selected-place-changed", place);
+          break;
+        }
+      }
     };
 
     document.head.appendChild(appScriptElement);

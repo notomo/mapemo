@@ -7,7 +7,7 @@ export default class MapMarker extends Vue {
   @Prop() map!: google.maps.Map;
   @Prop() place!: ViewPlace;
   @Prop() visible!: boolean;
-  @Prop() selectedPlace!: ViewPlace | null;
+  @Prop() isSelected!: boolean;
 
   protected marker: null | google.maps.Marker = null;
   protected infoWindow: null | google.maps.InfoWindow = null;
@@ -37,6 +37,8 @@ export default class MapMarker extends Vue {
       "closeclick",
       this.onInfoWindowClosed
     );
+
+    this.updateSelectedPlace(this.isSelected, false);
   }
 
   beforeDestroy() {
@@ -62,16 +64,12 @@ export default class MapMarker extends Vue {
     this.$emit("marker-updated", this.place);
   }
 
-  @Watch("selectedPlace")
-  updateSelectedPlace(newPlace: ViewPlace | null, _oldPlace: ViewPlace | null) {
+  @Watch("isSelected")
+  updateSelectedPlace(isSelected: boolean, _oldValue: boolean) {
     if (this.marker === null || this.infoWindow == null) {
       return;
     }
-    if (
-      newPlace === null ||
-      !newPlace.visible ||
-      !newPlace.equals(this.place)
-    ) {
+    if (!isSelected) {
       this.infoWindow.close();
     } else {
       this.infoWindow.open(this.map, this.marker);

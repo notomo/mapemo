@@ -1,7 +1,7 @@
 import Vue from "vue";
 import { ViewPlace } from "../../models/place";
 import MapMarker from "../map-marker/template.vue";
-import { Component, Prop } from "vue-property-decorator";
+import { Component, Prop, Watch } from "vue-property-decorator";
 
 const defaultLat = 35.6975644;
 const defaultLng = 139.7633811;
@@ -40,5 +40,18 @@ export default class MapArea extends Vue {
 
   onMarkerUpdated(place: ViewPlace | null) {
     this.$emit("marker-updated", place);
+  }
+
+  isPlaceSelected(place: ViewPlace): boolean {
+    return this.selectedPlace !== null && this.selectedPlace.equals(place);
+  }
+
+  @Watch("selectedPlace")
+  updateSelectedPlace(newPlace: ViewPlace | null, _oldPlace: ViewPlace | null) {
+    if (newPlace === null) {
+      this.$router.push("/");
+    } else {
+      this.$router.push(`/places/${newPlace.id}`);
+    }
   }
 }

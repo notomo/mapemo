@@ -4,7 +4,10 @@ import app from "./app.vue";
 
 Vue.use(Router);
 
-const routes = [{ path: "/", component: app }];
+const routes = [
+  { path: "/", component: app },
+  { path: "/places/:placeId", component: app },
+];
 
 const router = new Router({ routes: routes, mode: "history" });
 
