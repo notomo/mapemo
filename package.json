@@ -15,10 +15,10 @@
     "deploy": "webpack --mode production && firebase deploy --only hosting",
     "deploy-storage-rule": "firebase deploy --only storage",
     "analyze": "webpack --mode production --env.ANALYZE && webpack-bundle-analyzer ./dist/stats.json --mode static",
-    "get-position": "cd tool && python3 get_position.py"
+    "get-position": "cd tool && python3 get_position.py",
+    "update-data": "cd tool && python3 update.py"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "firebase": "^5.10.1",
     "googlemaps": "^1.12.0",
     "vue": "^2.6.10",

@@ -4,7 +4,6 @@ import ListItem from "../list-item/template.vue";
 import { Component, Prop } from "vue-property-decorator";
 import VueScroll from "vuescroll";
 import { firebaseApp } from "./../../firebase";
-import Axios from "axios";
 import SearchIcon from "./search.svg";
 
 @Component({
@@ -57,7 +56,7 @@ export default class ListArea extends Vue {
     storageScriptElement.setAttribute("type", "text/javascript");
     storageScriptElement.setAttribute(
       "src",
-      "https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"
+      "https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"
     );
     storageScriptElement.async = true;
 
@@ -66,13 +65,12 @@ export default class ListArea extends Vue {
     };
 
     storageScriptElement.onload = async () => {
-      const file = firebaseApp()
-        .storage()
-        .ref("data.json");
-      const url = await file.getDownloadURL();
-      const response = await Axios.create().get<Place[]>(url);
-      const places = response.data.map(place => {
-        return new ViewPlaceImpl(place.id, place.name, place.position, true);
+      const places = (await firebaseApp()
+        .firestore()
+        .collection("places")
+        .get()).docs.map(doc => {
+        const place = doc.data() as Place;
+        return new ViewPlaceImpl(doc.id, place.name, place.position, true);
       });
       this.allPlaces = places;
       this.$emit("places-changed", places);
