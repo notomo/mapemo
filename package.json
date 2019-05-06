@@ -11,7 +11,7 @@
     "update-cors": "gsutil cors set cors.json gs://mapemo.appspot.com/",
     "upload-data": "gsutil cp -z json data.json gs://mapemo.appspot.com/data.json",
     "setup-firebase": "npm install -g firebase-tools && firebase login --no-localhost && firebase init",
-    "serve": "firebase serve -p 5000 -o 0.0.0.0",
+    "start": "firebase serve -p 5000 -o 0.0.0.0",
     "deploy": "webpack --mode production && firebase deploy --only hosting",
     "deploy-storage-rule": "firebase deploy --only storage",
     "analyze": "webpack --mode production --env.ANALYZE && webpack-bundle-analyzer ./dist/stats.json --mode static",
@@ -40,6 +40,7 @@
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.29.6",
     "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.0"
+    "webpack-cli": "^3.3.0",
+    "workbox-webpack-plugin": "^4.3.1"
   }
 }

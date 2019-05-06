@@ -1,5 +1,6 @@
 const { VueLoaderPlugin } = require("vue-loader");
 const StatsPlugin = require("stats-webpack-plugin");
+const { GenerateSW } = require("workbox-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = (env, options) => {
@@ -17,6 +18,7 @@ module.exports = (env, options) => {
   const plugins = [
     new VueLoaderPlugin(),
     new webpack.EnvironmentPlugin(envVars),
+    new GenerateSW({}),
   ];
   if (env !== undefined && "ANALYZE" in env) {
     plugins.push(

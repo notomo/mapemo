@@ -1,3 +1,6 @@
+import { installServiceWorker } from "./sw";
+installServiceWorker();
+
 import Vue from "vue";
 import Router from "vue-router";
 import app from "./app.vue";
