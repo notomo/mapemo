@@ -33,6 +33,7 @@ export default class MapArea extends Vue {
         },
         mapTypeControl: false,
         zoom: Number(this.$route.query.zoom) || defaultZoom,
+        gestureHandling: "greedy",
       });
     };
     document.head.appendChild(scriptElement);
