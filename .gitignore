@@ -4,6 +4,8 @@
 /dist/*
 !/dist/index.html
 !/dist/robots.txt
+!/dist/manifest.json
+!/dist/images
 /.firebase
 /report.html
 /tool/input.json
