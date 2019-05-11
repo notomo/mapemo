@@ -7,17 +7,20 @@
     <link rel="dns-prefetch" href="https://www.gstatic.com/" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com" />
     <script>
-      WebFontConfig = { google: { families: ['Noto+Sans+JP'] } };
-      (function() {
-        const script = document.createElement('script');
-        script.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-        script.type = 'text/javascript';
-        script.async = 'true';
-        const s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(script, s);
-      })();
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', "https://fonts.googleapis.com/css?family=Noto+Sans+JP", true);
+      xhr.onreadystatechange = () => {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+          let css = xhr.responseText;
+          css = css.replace(/}/g, 'font-display: swap; }');
+          const head = document.getElementsByTagName('head')[0];
+          const style = document.createElement('style');
+          style.appendChild(document.createTextNode(css));
+          head.appendChild(style);
+        }
+      };
+      xhr.send();
     </script>
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="manifest" href="/manifest.json">
