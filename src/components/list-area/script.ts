@@ -44,46 +44,22 @@ export default class ListArea extends Vue {
   }
 
   async mounted() {
-    const appScriptElement = document.createElement("script");
-    appScriptElement.setAttribute("type", "text/javascript");
-    appScriptElement.setAttribute(
-      "src",
-      "https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"
-    );
-    appScriptElement.async = true;
+    const places = (await firebaseApp()
+      .firestore()
+      .collection("places")
+      .get()).docs.map(doc => {
+      const place = doc.data() as Place;
+      return new ViewPlaceImpl(doc.id, place.name, place.position, true);
+    });
+    this.allPlaces = places;
+    this.$emit("places-changed", places);
 
-    const storageScriptElement = document.createElement("script");
-    storageScriptElement.setAttribute("type", "text/javascript");
-    storageScriptElement.setAttribute(
-      "src",
-      "https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"
-    );
-    storageScriptElement.async = true;
-
-    appScriptElement.onload = async () => {
-      document.head.appendChild(storageScriptElement);
-    };
-
-    storageScriptElement.onload = async () => {
-      const places = (await firebaseApp()
-        .firestore()
-        .collection("places")
-        .get()).docs.map(doc => {
-        const place = doc.data() as Place;
-        return new ViewPlaceImpl(doc.id, place.name, place.position, true);
-      });
-      this.allPlaces = places;
-      this.$emit("places-changed", places);
-
-      const selectedPlaceId = this.$route.params.placeId;
-      for (const place of places) {
-        if (place.id === selectedPlaceId) {
-          this.$emit("selected-place-changed", place);
-          break;
-        }
+    const selectedPlaceId = this.$route.params.placeId;
+    for (const place of places) {
+      if (place.id === selectedPlaceId) {
+        this.$emit("selected-place-changed", place);
+        break;
       }
-    };
-
-    document.head.appendChild(appScriptElement);
+    }
   }
 }
