@@ -26,6 +26,18 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#E6A734">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/icon-180x180.png">
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .then(reg => {
+            console.log("[Service Worker]: registered");
+          })
+          .catch(err => {
+            console.log("[Service Worker]: failed to register with " + err);
+          });
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>

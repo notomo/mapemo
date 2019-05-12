@@ -15,6 +15,15 @@ workbox.core.setCacheNameDetails({
 });
 
 workbox.routing.registerRoute(
+  new RegExp("/app.js$"),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: "mapemo-js",
+    maxAgeSeconds: 60 * 60 * 24 * 30,
+    maxEntries: 1,
+  })
+);
+
+workbox.routing.registerRoute(
   new RegExp("^https://fonts.googleapis.com"),
   new workbox.strategies.CacheFirst({
     cacheName: "google-fonts-googleapis",
@@ -24,6 +33,7 @@ workbox.routing.registerRoute(
       }),
       new workbox.expiration.Plugin({
         maxAgeSeconds: 60 * 60 * 24 * 365,
+        maxEntries: 2,
       }),
     ],
   })
@@ -39,6 +49,22 @@ workbox.routing.registerRoute(
       }),
       new workbox.expiration.Plugin({
         maxAgeSeconds: 60 * 60 * 24 * 365,
+      }),
+    ],
+  })
+);
+
+workbox.routing.registerRoute(
+  new RegExp("^https://maps.gstatic.com/mapfiles/.*"),
+  new workbox.strategies.CacheFirst({
+    cacheName: "google-map-gstatic",
+    plugins: [
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200],
+      }),
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+        maxEntries: 10,
       }),
     ],
   })

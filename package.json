@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "description": "map with memo",
   "scripts": {
-    "build": "webpack --mode development",
-    "build-prod": "rm -rf ./dist/precache-* && webpack --mode production",
+    "build": "npm run clean && webpack --mode development",
+    "build-prod": "npm run clean && webpack --mode production",
     "watch": "webpack -w --mode development",
     "setup": "npm install && npm run build && gcloud init --console-only",
     "update-cors": "gsutil cors set cors.json gs://mapemo.appspot.com/",
@@ -15,7 +15,8 @@
     "deploy-firestore-rule": "firebase deploy --only firestore:rules",
     "analyze": "webpack --mode production --env.ANALYZE && webpack-bundle-analyzer ./dist/stats.json --mode static",
     "get-position": "cd tool && python3 get_position.py",
-    "update-data": "cd tool && python3 update.py"
+    "update-data": "cd tool && python3 update.py",
+    "clean": "rm -rf ./dist/*.js"
   },
   "dependencies": {
     "firebase": "^5.10.1",
