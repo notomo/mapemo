@@ -10,6 +10,7 @@ Vue.use(Router);
 const routes = [
   { path: "/", component: app },
   { path: "/places/:placeId", component: app },
+  { path: "*", component: app },
 ];
 
 const router = new Router({ routes: routes, mode: "history" });
