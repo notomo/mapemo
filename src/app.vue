@@ -22,7 +22,6 @@
 <script lang="ts" src="./app.ts"></script>
 
 <style scoped>
-
 .main-wrapper {
   display: flex;
   flex-flow: column nowrap;
@@ -53,5 +52,4 @@
     width: 40vw;
   }
 }
-
 </style>

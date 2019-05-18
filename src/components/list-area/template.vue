@@ -1,10 +1,19 @@
 <template>
   <div class="list-column-wrapper">
     <div class="form-wrapper">
-      <search-icon class="search-icon"></search-icon/>
-      <input @input="onInput" v-model="query" class="search-form" size="1" aria-label="Search for memo">
+      <search-icon class="search-icon"></search-icon>
+      <input
+        @input="onInput"
+        v-model="query"
+        class="search-form"
+        size="1"
+        aria-label="Search for memo"
+      />
     </div>
-    <vue-scroll class="scroll-area" :ops="{ bar: { background: '#000000', opacity: 0.4 }}">
+    <vue-scroll
+      class="scroll-area"
+      :ops="{ bar: { background: '#000000', opacity: 0.4 } }"
+    >
       <main class="list">
         <list-item
           v-for="place in this.places"
@@ -21,7 +30,6 @@
 <script lang="ts" src="./script.ts"></script>
 
 <style scoped>
-
 .list-column-wrapper {
   display: flex;
   flex-flow: column nowrap;
@@ -30,7 +38,7 @@
 
 .form-wrapper {
   flex: 0 0 45px;
-	background: white;
+  background: white;
   display: flex;
   flex-flow: row nowrap;
   align-items: stretch;
@@ -61,5 +69,4 @@
   display: flex;
   flex-flow: column nowrap;
 }
-
 </style>

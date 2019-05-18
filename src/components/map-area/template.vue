@@ -18,7 +18,6 @@
 <script lang="ts" src="./script.ts"></script>
 
 <style scoped>
-
 #map-wrapper {
   height: 100%;
   width: 100%;
@@ -29,5 +28,4 @@
   height: 100%;
   width: 100%;
 }
-
 </style>

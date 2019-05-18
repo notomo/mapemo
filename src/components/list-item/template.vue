@@ -1,10 +1,6 @@
 <template>
   <div class="wrapper">
-    <div
-      @click="onClick"
-      class="item"
-      :class="{ active: this.isSelected }"
-    >
+    <div @click="onClick" class="item" :class="{ active: this.isSelected }">
       {{ this.place.name }}
     </div>
   </div>
@@ -13,7 +9,6 @@
 <script lang="ts" src="./script.ts"></script>
 
 <style scoped>
-
 .wrapper {
   display: table;
 }
@@ -30,5 +25,4 @@
 .active {
   background-color: #ffd1b6;
 }
-
 </style>
