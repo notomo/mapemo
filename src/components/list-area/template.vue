@@ -22,24 +22,7 @@
           :is-selected="isPlaceSelected(place)"
           @item-clicked="onItemClicked"
         ></list-item>
-        <template v-if="this.loading">
-          <div class="more balls">
-            <div class="ball-container">
-              <div class="ball"></div>
-            </div>
-            <div class="ball-container">
-              <div class="ball"></div>
-            </div>
-            <div class="ball-container">
-              <div class="ball"></div>
-            </div>
-          </div>
-        </template>
-        <template v-else-if="!this.loaded">
-          <div class="more" @click.once="onMoreItemClicked">
-            More
-          </div>
-        </template>
+        <list-loader :loaded="this.loaded" @load="onLoadingMore"></list-loader>
       </main>
     </vue-scroll>
   </div>
@@ -86,51 +69,5 @@
 .list {
   display: flex;
   flex-flow: column nowrap;
-}
-
-.more {
-  background-color: #ffffff;
-  border: solid 1px #333;
-  width: 100%;
-  display: flex;
-  padding: 11px 20px;
-  justify-content: center;
-  align-items: center;
-  min-height: 40px;
-}
-
-@keyframes loading {
-  0%,
-  100% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.6;
-  }
-}
-
-.ball-container {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
-}
-
-.ball {
-  border-radius: 50%;
-  background-color: #000000;
-  width: 100%;
-  height: 100%;
-  transform-origin: 50% 50%;
-  animation: loading 1s -0.6s infinite linear;
-}
-
-.balls .ball-container:nth-child(2) .ball {
-  animation-delay: -0.3s;
-}
-.balls .ball-container:nth-child(3) .ball {
-  animation-delay: 0s;
 }
 </style>

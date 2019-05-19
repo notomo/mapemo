@@ -1,18 +1,18 @@
 import Vue from "vue";
 import { ViewPlace, Place, ViewPlaceImpl } from "../../models/place";
 import ListItem from "../list-item/template.vue";
+import ListLoader from "../list-loader/template.vue";
 import { Component, Prop } from "vue-property-decorator";
 import VueScroll from "vuescroll";
 import { firebaseApp } from "./../../firebase";
 import SearchIcon from "./search.svg";
 
 @Component({
-  components: { ListItem, VueScroll, SearchIcon },
+  components: { ListItem, VueScroll, SearchIcon, ListLoader },
 })
 export default class ListArea extends Vue {
   protected query = "";
   protected allPlaces: ViewPlace[] = [];
-  protected loading = false;
   protected loaded = false;
   @Prop() places!: ViewPlace[];
   @Prop() selectedPlace!: ViewPlace | null;
@@ -40,8 +40,7 @@ export default class ListArea extends Vue {
     this.$emit("item-clicked", place);
   }
 
-  async onMoreItemClicked() {
-    this.loading = true;
+  async onLoadingMore() {
     const places = (await firebaseApp()
       .firestore()
       .collection("places")
@@ -65,7 +64,6 @@ export default class ListArea extends Vue {
       }
     }
     this.loaded = true;
-    this.loading = false;
   }
 
   isPlaceSelected(place: ViewPlace): boolean {
