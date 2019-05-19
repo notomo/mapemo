@@ -3,16 +3,19 @@ const StatsPlugin = require("stats-webpack-plugin");
 const { InjectManifest } = require("workbox-webpack-plugin");
 const webpack = require("webpack");
 
+const fs = require("fs");
+const readFileSync = fs.readFileSync;
+
 module.exports = (env, options) => {
   let envVars = {};
+  const places = JSON.parse(readFileSync("./first.json"));
+  envVars = {
+    PLACES: places,
+  };
   if (options.mode === "development") {
-    envVars = {
-      GOOGLE_MAP_API_KEY: "AIzaSyBq5DSPVJrF_7xlXTytsuCnhaqvvKWQhI4",
-    };
+    envVars["GOOGLE_MAP_API_KEY"] = "AIzaSyBq5DSPVJrF_7xlXTytsuCnhaqvvKWQhI4";
   } else {
-    envVars = {
-      GOOGLE_MAP_API_KEY: "AIzaSyDYco7xbM_0sdt4T0knOuo9cVimWUtlVBo",
-    };
+    envVars["GOOGLE_MAP_API_KEY"] = "AIzaSyDYco7xbM_0sdt4T0knOuo9cVimWUtlVBo";
   }
 
   const plugins = [

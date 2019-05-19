@@ -1,5 +1,6 @@
 /node_modules
 /data.json
+/first.json
 /firebase-debug.log
 /dist/*
 !/dist/index.html
@@ -8,6 +9,4 @@
 !/dist/images
 /.firebase
 /report.html
-/tool/input.json
-/tool/output.json
-/tool/data.json
+/tool/*.json

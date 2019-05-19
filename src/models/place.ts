@@ -20,12 +20,13 @@ export class ViewPlaceImpl implements ViewPlace {
   constructor(
     public readonly id: string,
     public readonly name: string,
-    positionData: PositionData,
+    lat: number,
+    lng: number,
     public visible: boolean
   ) {
     this.position = {
-      lat: positionData.latitude,
-      lng: positionData.longitude,
+      lat: lat,
+      lng: lng,
     };
   }
 

@@ -12,7 +12,8 @@ import SearchIcon from "./search.svg";
 export default class ListArea extends Vue {
   protected query = "";
   protected allPlaces: ViewPlace[] = [];
-
+  protected loading = false;
+  protected loaded = false;
   @Prop() places!: ViewPlace[];
   @Prop() selectedPlace!: ViewPlace | null;
 
@@ -39,21 +40,55 @@ export default class ListArea extends Vue {
     this.$emit("item-clicked", place);
   }
 
-  isPlaceSelected(place: ViewPlace): boolean {
-    return this.selectedPlace !== null && this.selectedPlace.equals(place);
-  }
-
-  async mounted() {
+  async onMoreItemClicked() {
+    this.loading = true;
     const places = (await firebaseApp()
       .firestore()
       .collection("places")
       .get()).docs.map(doc => {
       const place = doc.data() as Place;
-      return new ViewPlaceImpl(doc.id, place.name, place.position, true);
+      return new ViewPlaceImpl(
+        doc.id,
+        place.name,
+        place.position.latitude,
+        place.position.longitude,
+        true
+      );
     });
     this.allPlaces = places;
     this.$emit("places-changed", places);
+    const selectedPlaceId = this.$route.params.placeId;
+    for (const place of places) {
+      if (place.id === selectedPlaceId) {
+        this.$emit("selected-place-changed", place);
+        break;
+      }
+    }
+    this.loaded = true;
+    this.loading = false;
+  }
 
+  isPlaceSelected(place: ViewPlace): boolean {
+    return this.selectedPlace !== null && this.selectedPlace.equals(place);
+  }
+
+  async mounted() {
+    const envPlaces = process.env.PLACES as any;
+    const places = (envPlaces as {
+      id: string;
+      name: string;
+      position: { lat: number; lng: number };
+    }[]).map(place => {
+      return new ViewPlaceImpl(
+        place.id,
+        place.name,
+        place.position.lat,
+        place.position.lng,
+        true
+      );
+    });
+    this.allPlaces = places;
+    this.$emit("places-changed", places);
     const selectedPlaceId = this.$route.params.placeId;
     for (const place of places) {
       if (place.id === selectedPlaceId) {

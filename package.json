@@ -5,7 +5,7 @@
   "description": "map with memo",
   "scripts": {
     "build": "npm run clean && webpack --mode development",
-    "build-prod": "npm run clean && webpack --mode production",
+    "build-prod": "python3 ./tool/get_first.py && npm run clean && webpack --mode production",
     "watch": "webpack -w --mode development",
     "setup": "npm install && npm run build && gcloud init --console-only",
     "update-cors": "gsutil cors set cors.json gs://mapemo.appspot.com/",
