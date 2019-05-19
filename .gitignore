@@ -6,6 +6,7 @@
 !/dist/index.html
 !/dist/robots.txt
 !/dist/manifest.json
+!/dist/favicon.png
 !/dist/images
 /.firebase
 /report.html
