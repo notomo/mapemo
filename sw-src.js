@@ -24,6 +24,15 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
+  new RegExp("/favicon.png$"),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: "mapemo-favicon",
+    maxAgeSeconds: 60 * 60 * 24 * 30,
+    maxEntries: 1,
+  })
+);
+
+workbox.routing.registerRoute(
   new RegExp("^https://fonts.googleapis.com"),
   new workbox.strategies.CacheFirst({
     cacheName: "google-fonts-googleapis",
