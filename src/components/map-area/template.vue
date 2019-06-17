@@ -1,7 +1,7 @@
 <template>
   <div id="map-wrapper">
-    <div id="map"></div>
-    <template v-if="!!this.map">
+    <div id="map" :class="{ hidden: !this.mapLoaded, fadein: this.mapLoaded }"></div>
+    <template v-if="this.mapLoaded">
       <map-marker
         v-for="place in this.places"
         :key="place.id"
@@ -22,6 +22,23 @@
   height: 100%;
   width: 100%;
   min-height: 60vh;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadein {
+  animation: fadein 0.6s;
 }
 
 #map {

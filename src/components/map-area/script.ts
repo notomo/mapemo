@@ -15,6 +15,7 @@ export default class MapArea extends Vue {
   @Prop() selectedPlace!: ViewPlace | null;
 
   protected map: null | google.maps.Map = null;
+  protected mapLoaded = false;
 
   mounted() {
     const scriptElement = document.createElement("script");
@@ -34,6 +35,9 @@ export default class MapArea extends Vue {
         mapTypeControl: false,
         zoom: Number(this.$route.query.zoom) || defaultZoom,
         gestureHandling: "greedy",
+      });
+      google.maps.event.addListenerOnce(this.map, "tilesloaded", () => {
+        this.mapLoaded = true;
       });
     };
     document.head.appendChild(scriptElement);
