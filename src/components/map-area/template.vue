@@ -1,7 +1,7 @@
 <template>
   <div id="map-wrapper">
     <div id="map" :class="{ hidden: !this.mapLoaded, fadein: this.mapLoaded }"></div>
-    <template v-if="this.mapLoaded">
+    <template v-if="!!this.map">
       <map-marker
         v-for="place in this.places"
         :key="place.id"
