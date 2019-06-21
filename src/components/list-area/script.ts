@@ -18,9 +18,14 @@ export default class ListArea extends Vue {
   @Prop() selectedPlace!: ViewPlace | null;
 
   onInput() {
-    const trimmedQuery = this.query.trim();
+    const words = this.query.trim().split(/\s+/);
     const places = this.allPlaces.map(place => {
-      place.visible = place.name.includes(trimmedQuery);
+      place.visible = words.reduce(
+        (acc, word) => {
+          return place.name.includes(word) && acc;
+        },
+        true as boolean
+      );
       return place;
     });
     this.$emit("places-changed", places);
