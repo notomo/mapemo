@@ -22,6 +22,7 @@
   height: 100%;
   width: 100%;
   min-height: 60vh;
+  background-color: #333333;
 }
 
 .hidden {
@@ -44,5 +45,6 @@
 #map {
   height: 100%;
   width: 100%;
+  background-color: #333333;
 }
 </style>

@@ -14,8 +14,7 @@
 }
 
 .item {
-  background-color: #f0f0f0;
-  border: solid 1px #333;
+  border: solid 1px #a6a6a6;
   vertical-align: middle;
   display: table-cell;
   padding: 10px 20px;
@@ -24,5 +23,6 @@
 
 .active {
   background-color: #ffd1b6;
+  color: #333333;
 }
 </style>

@@ -25,8 +25,7 @@
 
 <style scoped>
 .more {
-  background-color: #ffffff;
-  border: solid 1px #333;
+  border: solid 1px #a6a6a6;
   width: 100%;
   display: flex;
   padding: 11px 20px;
@@ -56,7 +55,7 @@
 
 .ball {
   border-radius: 50%;
-  background-color: #000000;
+  background-color: #f2f2f2;
   width: 100%;
   height: 100%;
   transform-origin: 50% 50%;

@@ -25,6 +25,8 @@
 .main-wrapper {
   display: flex;
   flex-flow: column nowrap;
+  background-color: #333333;
+  color: #f2f2f2;
 }
 
 .map-column {
@@ -33,7 +35,6 @@
 }
 
 .list-column {
-  background-color: #a0a0a0;
   height: 40vh;
 }
 

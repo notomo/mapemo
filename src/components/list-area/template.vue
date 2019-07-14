@@ -39,11 +39,10 @@
 
 .form-wrapper {
   flex: 0 0 45px;
-  background: white;
   display: flex;
   flex-flow: row nowrap;
   align-items: stretch;
-  border: solid 1px #333;
+  border: solid 1px #a6a6a6;
 }
 
 .search-icon {
@@ -60,6 +59,8 @@
   outline: none;
   flex-grow: 1;
   width: 100%;
+  color: #f2f2f2;
+  background-color: #333333;
 }
 
 .scroll-area {
