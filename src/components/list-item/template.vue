@@ -22,7 +22,7 @@
 }
 
 .active {
-  background-color: #ffd1b6;
+  background-color: #e5b767;
   color: #333333;
 }
 </style>

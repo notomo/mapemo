@@ -15,7 +15,7 @@
     </template>
     <template v-else-if="!this.loaded">
       <div class="more" @click.once="load">
-        More
+        もっと見る
       </div>
     </template>
   </div>
@@ -25,13 +25,13 @@
 
 <style scoped>
 .more {
-  border: solid 1px #a6a6a6;
+  border: solid 2px #e5b767;
   width: 100%;
   display: flex;
   padding: 11px 20px;
   justify-content: center;
   align-items: center;
-  min-height: 40px;
+  min-height: 42px;
 }
 
 @keyframes loading {
