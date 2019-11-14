@@ -15,6 +15,7 @@
     "deploy-firestore-rule": "firebase deploy --only firestore:rules",
     "analyze": "webpack --mode production --env.ANALYZE && webpack-bundle-analyzer ./dist/stats.json --mode static",
     "get-position": "cd tool && python3 get_position.py",
+    "setup-tool": "cd tool && pip3 install -r requirements.txt",
     "update-data": "cd tool && python3 update.py",
     "clean": "rm -rf ./dist/*.js"
   },
